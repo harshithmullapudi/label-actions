@@ -18,21 +18,20 @@ class App {
 
   async performActions() {
     const payload = github.context.payload;
-    console.log(`Hello ${JSON.stringify(payload)}!`);
-    const threadType = payload.issue ? "issue" : "pr";
-
     const threadData = payload.issue || payload.pull_request;
 
-    const { owner, repo } = github.context.repo;
-    const issue = { owner, repo, issue_number: threadData.number };
-    console.log(`Hello ${JSON.stringify(issue)}!`);
-    const newLabels = ["new"];
+    const { author_association } = threadData;
+    let labels = ["community"];
 
-    if (newLabels.length) {
+    if (author_association == "CONTRIBUTION") {
+      labels = ["community"];
+    }
+
+    if (labels.length) {
       core.debug("Labeling");
       await this.client.rest.issues.addLabels({
         ...issue,
-        labels: newLabels,
+        labels,
       });
     }
   }
