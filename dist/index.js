@@ -11716,14 +11716,14 @@ class App {
 
   async performActions() {
     const payload = github.context.payload;
-    console.log(JSON.stringify(`Hello ${payload}!`));
+    console.log(`Hello ${JSON.stringify(payload)}!`);
     const threadType = payload.issue ? "issue" : "pr";
 
     const threadData = payload.issue || payload.pull_request;
 
     const { owner, repo } = github.context.repo;
     const issue = { owner, repo, issue_number: threadData.number };
-    console.log(JSON.stringify(`Hello ${issue}!`));
+    console.log(`Hello ${JSON.stringify(issue)}!`);
     const newLabels = ["new"];
 
     if (newLabels.length) {
