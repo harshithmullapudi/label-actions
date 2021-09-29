@@ -20,15 +20,9 @@ class App {
     const payload = github.context.payload;
     const threadData = payload.issue || payload.pull_request;
 
-    const { author_association } = threadData;
-    let labels = ["community"];
+    const { author_association } = github.context.repo;
+    const newLabels = ["community"];
 
-    if (author_association == "CONTRIBUTION") {
-      labels = ["community"];
-    }
-
-    const { owner, repo } = github.context.repo;
-    const issue = { owner, repo, issue_number: threadData.number };
 
     if (labels.length) {
       core.debug("Labeling");
