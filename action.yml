@@ -10,4 +10,4 @@ runs:
   main: 'dist/index.js'
 branding:
   icon: 'tag'
-  color: 'purple'
+  color: 'grey'
