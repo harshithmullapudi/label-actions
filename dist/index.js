@@ -11701,7 +11701,7 @@ const github = __nccwpck_require__(5438);
 
 async function run() {
   try {
-    const client = github.getOctokit(config["github-token"]);
+    const client = github.getOctokit(core.getInput("github-token"));
     const app = new App(client);
     await app.performActions();
   } catch (err) {
