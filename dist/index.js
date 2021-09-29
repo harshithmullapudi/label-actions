@@ -11720,7 +11720,8 @@ class App {
     const threadData = payload.issue || payload.pull_request;
 
     const { author_association } = threadData;
-
+    let labels = [];
+    
     if (author_association == "CONTRIBUTOR") {
       labels = ["community"];
     }
