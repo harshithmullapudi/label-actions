@@ -21,4 +21,4 @@ jobs:
     steps:
       - uses: harshithmullapudi/label-actions@18ee7937adac018df1609c8ab8269953386f2d35
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.TOKEN }}
