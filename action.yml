@@ -5,9 +5,6 @@ inputs:
   github-token:
     description: 'GitHub access token'
     default: '${{ github.token }}'
-  config-path:
-    description: 'Configuration file path'
-    default: '.github/label-actions.yml'
 runs:
   using: 'node12'
   main: 'dist/index.js'
