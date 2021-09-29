@@ -18,14 +18,14 @@ class App {
 
   async performActions() {
     const payload = github.context.payload;
-    console.log(`Hello ${payload}!`);
+    console.log(JSON.stringify(`Hello ${payload}!`));
     const threadType = payload.issue ? "issue" : "pr";
 
     const threadData = payload.issue || payload.pull_request;
 
     const { owner, repo } = github.context.repo;
     const issue = { owner, repo, issue_number: threadData.number };
-    console.log(`Hello ${issue}!`);
+    console.log(JSON.stringify(`Hello ${issue}!`));
     const newLabels = ["new"];
 
     if (newLabels.length) {
