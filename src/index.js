@@ -27,6 +27,9 @@ class App {
       labels = ["community"];
     }
 
+    const { owner, repo } = github.context.repo;
+    const issue = { owner, repo, issue_number: threadData.number };
+
     if (labels.length) {
       core.debug("Labeling");
       await this.client.rest.issues.addLabels({
