@@ -19,6 +19,6 @@ jobs:
   action:
     runs-on: ubuntu-latest
     steps:
-      - uses: harshithmullapudi/label-actions@708b99a4dc47b5e424ba9d6a8e49e525574fad47
+      - uses: harshithmullapudi/label-actions@3f570eb919a3cbcb4c2bf9861d03b21adb36e311
         with:
           github-token: ${{ secrets.TOKEN }}
