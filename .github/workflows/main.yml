@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: harshithmullapudi/label-actions@18ee7937adac018df1609c8ab8269953386f2d35
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
