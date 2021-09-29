@@ -23,11 +23,12 @@ class App {
     const { author_association } = github.context.repo;
     const newLabels = ["community"];
 
-    if (newLabels.length) {
+
+    if (labels.length) {
       core.debug("Labeling");
       await this.client.rest.issues.addLabels({
         ...issue,
-        labels: newLabels,
+        labels,
       });
     }
   }
