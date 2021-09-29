@@ -11716,12 +11716,12 @@ class App {
 
   async performActions() {
     const payload = github.context.payload;
+    console.log(JSON.stringify(payload));
     const threadData = payload.issue || payload.pull_request;
 
     const { author_association } = threadData;
-    let labels = ["community"];
 
-    if (author_association == "CONTRIBUTION") {
+    if (author_association == "CONTRIBUTOR") {
       labels = ["community"];
     }
 
