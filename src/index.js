@@ -18,6 +18,7 @@ class App {
 
   async performActions() {
     const payload = github.context.payload;
+    console.log(payload);
     const threadData = payload.issue || payload.pull_request;
 
     const { author_association } = threadData;
