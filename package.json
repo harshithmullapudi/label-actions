@@ -1,7 +1,7 @@
 {
-  "name": "label-actions",
+  "name": "github-community-label-bot",
   "version": "0.1.0",
-  "description": "A GitHub Action that performs actions when issues or pull requests are created",
+  "description": "A GitHub Action that tags community Pr/Issue",
   "author": "Harshith Mullapudi",
   "license": "MIT", 
   "main": "src/index.js",
