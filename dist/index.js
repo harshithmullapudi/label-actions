@@ -15898,15 +15898,17 @@ class App {
     let labels = [];
 
     const thread = payload.issue ? "issues" : "pulls";
-
+    console.log(threadData);
     const url = `${threadData.repository_url}/${thread}/${threadData.number}`;
-
+    console.log(url);
     const response = await axios(url, {
       auth: {
         user: core.getInput("github-username"),
         password: core.getInput("github-token"),
       },
     });
+
+    console.log(response.data);
 
     const { author_association } = response.data;
     if (author_association) {
