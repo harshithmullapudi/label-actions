@@ -22,3 +22,4 @@ jobs:
       - uses: harshithmullapudi/label-actions@4802ff1555ab95d926c32838f5083cc7dd735b0f
         with:
           github-token: ${{ secrets.LABEL_BOT_TOKEN }}
+          github-username: ${{ secrets.LABEL_BOT_USERNAME }}

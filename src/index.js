@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+const axios = require("axios");
 
 async function run() {
   try {
@@ -23,6 +24,19 @@ class App {
 
     const { author_association } = threadData;
     let labels = [];
+
+    const thread = payload.issue ? "issues" : "pulls";
+
+    const url = `https://api.github.com/repos/airbytehq/airbyte/${thread}/${threadData.number}`;
+
+    const response = await axios(url, {
+      auth: {
+        user: core.getInput("github-username"),
+        password: core.getInput("github-token"),
+      },
+    });
+
+    console.log(response, "some");
 
     if (author_association == "CONTRIBUTOR" || author_association == "NONE") {
       labels = ["community"];
