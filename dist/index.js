@@ -15896,12 +15896,11 @@ class App {
     console.log(payload);
     const threadData = payload.issue || payload.pull_request;
 
-    const { author_association } = threadData;
     let labels = [];
 
     const thread = payload.issue ? "issues" : "pulls";
 
-    const url = `https://api.github.com/repos/airbytehq/airbyte/${thread}/${threadData.number}`;
+    const url = `${threadData.repository_url}/${thread}/${threadData.number}`;
 
     const response = await axios(url, {
       auth: {
@@ -15910,21 +15909,23 @@ class App {
       },
     });
 
-    console.log(response, "some");
+    const { author_association } = response.data;
 
-    if (author_association == "CONTRIBUTOR" || author_association == "NONE") {
-      labels = ["community"];
-    }
+    if (author_association) {
+      if (author_association == "CONTRIBUTOR" || author_association == "NONE") {
+        labels = ["community"];
+      }
 
-    const { owner, repo } = github.context.repo;
-    const issue = { owner, repo, issue_number: threadData.number };
+      const { owner, repo } = github.context.repo;
+      const issue = { owner, repo, issue_number: threadData.number };
 
-    if (labels.length) {
-      core.debug("Labeling");
-      await this.client.rest.issues.addLabels({
-        ...issue,
-        labels,
-      });
+      if (labels.length) {
+        core.debug("Labeling");
+        await this.client.rest.issues.addLabels({
+          ...issue,
+          labels,
+        });
+      }
     }
   }
 }
