@@ -2,6 +2,9 @@ name: 'Github community label bot'
 description: 'Perform actions when issues or pull requests are labeled or unlabeled'
 author: 'Armin Sebastian'
 inputs:
+  github-username:
+    description: 'GitHub username'
+    default: '${{ github.username }}'
   github-token:
     description: 'GitHub access token'
     default: '${{ github.token }}'
