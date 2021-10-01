@@ -15897,9 +15897,7 @@ class App {
 
     let labels = [];
 
-    const thread = payload.issue ? "issues" : "pulls";
-    console.log(threadData);
-    const url = `${threadData.repository_url}/${thread}/${threadData.number}`;
+    const { url } = threadData;
     console.log(url);
     const response = await axios(url, {
       auth: {
