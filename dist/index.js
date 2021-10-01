@@ -15910,7 +15910,7 @@ class App {
     });
 
     const { author_association } = response.data;
-
+    console.log(response.data);
     if (author_association) {
       if (author_association == "CONTRIBUTOR" || author_association == "NONE") {
         labels = ["community"];
