@@ -4,8 +4,7 @@ const axios = require("axios");
 
 async function run() {
   try {
-    const client = github.getOctokit(core.getInput("github-token"));
-    const app = new App(client);
+    const app = new App();
     await app.performActions();
   } catch (err) {
     core.setFailed(err);
@@ -36,7 +35,12 @@ class App {
 
     const { author_association } = response.data;
     if (author_association) {
-      if (author_association == "CONTRIBUTOR" || author_association == "NONE") {
+      if (
+        author_association == "CONTRIBUTOR" ||
+        author_association == "NONE" ||
+        author_association == "FIRST_TIME_CONTRIBUTOR" ||
+        author_association == "FIRST_TIMER"
+      ) {
         labels = ["community"];
       }
 
