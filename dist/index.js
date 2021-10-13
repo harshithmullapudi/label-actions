@@ -15878,7 +15878,8 @@ const axios = __nccwpck_require__(6545);
 
 async function run() {
   try {
-    const app = new App();
+    const client = github.getOctokit(core.getInput("github-token"));
+    const app = new App(client);
     await app.performActions();
   } catch (err) {
     core.setFailed(err);

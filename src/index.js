@@ -4,7 +4,8 @@ const axios = require("axios");
 
 async function run() {
   try {
-    const app = new App();
+    const client = github.getOctokit(core.getInput("github-token"));
+    const app = new App(client);
     await app.performActions();
   } catch (err) {
     core.setFailed(err);
